@@ -1,6 +1,7 @@
 javascript: (function () {
-    var p = document.getElementById("title");//書籍のタイトルの処理
+    var p = document.getElementById("productTitle");//書籍のタイトルの処理
     if (!p) var p = document.getElementById("ebooksTitle");
+    if (!p) var p = document.getElementById("title");
     var title = p.innerText.trim();
     console.log(title)
     
