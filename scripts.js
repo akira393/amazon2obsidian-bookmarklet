@@ -54,7 +54,7 @@ javascript: (function () {
     }
     var author = pub.join(' ');
 
-    title = title.replace(/:/g, '：').replace(/\\/g, '＼').replace(/\//g, '／').replace("[","［").replace("]","］");
+    title = title.replace(/:/g, '：').replace(/\\/g, '＼').replace(/\//g, '／').replace("[","［").replace("]","］").trim();
     var mdImage = '![|100](' + imageUrl + ')';
     const bookLink=`[${title}](https://www.amazon.co.jp/dp/${asin})`
     console.log(bookLink)
