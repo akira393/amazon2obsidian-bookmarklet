@@ -52,16 +52,34 @@ javascript: (function () {
         pub.push(pu + ' [[' + ct + ']]');
     }
     var author = pub.join(' ');
-    
-
 
     title = title.replace(/:/g, '：').replace(/\\/g, '＼').replace(/\//g, '／').replace("[","［").replace("]","］");
-    var mdImage = '%0A![|100](' + imageUrl + ')%0A';
+    var mdImage = '![|100](' + imageUrl + ')';
     const bookLink=`[${title}](https://www.amazon.co.jp/dp/${asin})`
     console.log(bookLink)
 
     // 表示させたい項目
-    var lines = '%0A' + bookLink + mdImage + author + '%0A' + publisherName + '%0A' + publisherDateContent + '%0A%0A%23%23 関連・思い出した本 %0A%0A%23%23 読書メモ%0A%0A';
-    const obsidian = 'obsidian://advanced-uri?filepath=' + title + '&data=' + lines;
+    const lines_unen=`---
+image: 表紙 ${mdImage}
+done: false
+publishDate: ${publisherDateContent}
+publisher: ${publisherName}
+author: ${author}
+---
+
+${mdImage}
+
+## link
+- [kindleLink](kindle://book?action=open&asin=${asin})
+- [mobilePdfLink](pdfefile:///同期フォルダ/電子書籍/${asin}.pdf)
+- [workPcPdfLink](file:///Users/salus/Library/CloudStorage/GoogleDrive-aki.040539@gmail.com/マイドライブ/電子書籍/${asin}.pdf)
+- [privatePcPdfLink](file:///Users/akiyoshi/Library/CloudStorage/GoogleDrive-aki.040539@gmail.com/マイドライブ/電子書籍/${asin}.pdf)
+
+## 関連・思い出した本
+
+## 読書メモ
+`
+
+    const obsidian = 'obsidian://advanced-uri?filepath=Zettelkasten/Books/' + title + '&data=' + encodeURIComponent(lines_unen);
     window.open(obsidian);
 })();
