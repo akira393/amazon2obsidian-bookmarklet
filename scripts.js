@@ -44,6 +44,7 @@ javascript: (function () {
     console.log(imageUrl)
 
     var pub = [];//著者情報の処理
+    //TODO モバイルからでは著者は取得することができない
     var c = document.getElementsByClassName('author');
     for (g = 0; g < c.length; g++) {
         var at = c[g].innerText.replace(/\r?\n/g, '').replace(/,/, '');
@@ -64,10 +65,12 @@ image: 表紙 ${mdImage}
 done: false
 publishDate: ${publisherDateContent}
 publisher: ${publisherName}
-author: ${author}
+have: 持っていない
 ---
 
 ${mdImage}
+
+author: ${author}
 
 ## link
 - [kindleLink](kindle://book?action=open&asin=${asin})
@@ -76,6 +79,7 @@ ${mdImage}
 - [privatePcPdfLink](file:///Users/akiyoshi/Library/CloudStorage/GoogleDrive-aki.040539@gmail.com/マイドライブ/電子書籍/${asin}.pdf)
 
 ## 関連・思い出した本
+
 
 ## 読書メモ
 `
